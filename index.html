@@ -1,0 +1,415 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="CV de Flavia Noelia López - Site Reliability Engineer / Senior Systems Administrator">
+    <meta name="keywords" content="SRE, Systems Administrator, DevOps, Zabbix, Linux, Windows Server">
+    <title>Flavia Noelia López - CV</title>
+    <link rel="icon" type="image/png" href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAABAAAAAQCAYAAAAf8/9hAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAAAdgAAAHYBTnsmCAAAABl0RVh0U29mdHdhcmUAd3d3Lmlua3NjYXBlLm9yZ5vuPBoAAABYSURBVDiNY2AYBYMRMDIxMfw/d+j/f0YmRrI1MTEyMjD8/8/wn4mRPM1MDAwM/xkYGBgYmVA4ZAGwC+AuIduAUQMYGEbTwYADRgbSo5GBgYFhNB2QAQDzRg1HkPlGXQAAAABJRU5ErkJggg==">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <style>
+        /* Animaciones */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes slideIn {
+            from { transform: translateX(-20px); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+
+        /* Modo oscuro */
+        @media (prefers-color-scheme: dark) {
+            body {
+                background: #1a202c !important;
+                color: #e2e8f0 !important;
+            }
+            .cv-container {
+                background: #2d3748 !important;
+                box-shadow: 0 3px 10px rgba(0,0,0,0.3) !important;
+            }
+            .name, .section-title, .job-title {
+                color: #e2e8f0 !important;
+            }
+            .tech-tag {
+                background: #4299E1 !important;
+                color: #fff !important;
+            }
+            .skill-category, .achievements, .job:hover {
+                background: #2d3748 !important;
+            }
+            .skill-item {
+                background: #4a5568 !important;
+                color: #e2e8f0 !important;
+            }
+        }
+
+        @media print {
+            .action-buttons {
+                display: none;
+            }
+            body {
+                background: white !important;
+                padding: 0 !important;
+            }
+            .cv-container {
+                box-shadow: none !important;
+                padding: 20px !important;
+            }
+            .tech-highlights, .achievements {
+                break-inside: avoid;
+            }
+            @page {
+                margin: 1cm;
+            }
+        }
+
+        body {
+            font-family: 'Segoe UI', Arial, sans-serif;
+            line-height: 1.6;
+            margin: 0;
+            padding: 20px;
+            background: #f0f2f5;
+            color: #2d3748;
+            text-rendering: optimizeLegibility;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        .cv-container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+            padding: 40px;
+            border-radius: 8px;
+        }
+
+        .header {
+            text-align: left;
+            border-bottom: 3px solid #4a5568;
+            padding-bottom: 20px;
+            margin-bottom: 30px;
+            animation: fadeIn 0.8s ease-out;
+        }
+
+        .name {
+            color: #2d3748;
+            font-size: 2.5em;
+            margin: 0;
+            font-weight: 700;
+        }
+
+        .title {
+            color: #4a5568;
+            font-size: 1.2em;
+            margin-top: 5px;
+        }
+
+        .contact-info {
+            display: flex;
+            gap: 20px;
+            margin-top: 15px;
+            color: #4a5568;
+            flex-wrap: wrap;
+        }
+
+        .tech-highlights {
+            background: #EDF2F7;
+            padding: 20px;
+            border-radius: 8px;
+            margin: 20px 0;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+        }
+
+        .tech-tag {
+            background: #4299E1;
+            color: white;
+            padding: 5px 15px;
+            border-radius: 15px;
+            font-size: 0.9em;
+        }
+
+        .achievements {
+            background: #F7FAFC;
+            padding: 20px;
+            border-left: 4px solid #4299E1;
+            margin: 20px 0;
+            animation: slideIn 0.8s ease-out;
+        }
+
+        .achievement-item {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .achievement-icon {
+            color: #4299E1;
+            font-weight: bold;
+        }
+
+        .main-grid {
+            display: grid;
+            grid-template-columns: 7fr 3fr;
+            gap: 40px;
+        }
+
+        .section {
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            color: #2d3748;
+            font-size: 1.5em;
+            border-bottom: 2px solid #4299E1;
+            padding-bottom: 5px;
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .job {
+            margin-bottom: 25px;
+            padding: 15px;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            animation: fadeIn 0.5s ease-out;
+            animation-fill-mode: both;
+        }
+
+        .job:hover {
+            background: #F7FAFC;
+        }
+
+        .job-title {
+            color: #2d3748;
+            font-weight: 600;
+            font-size: 1.1em;
+        }
+
+        .job-company {
+            color: #4299E1;
+            font-weight: 500;
+        }
+
+        .job-date {
+            color: #718096;
+            font-size: 0.9em;
+        }
+
+        .skills-grid {
+            display: grid;
+            grid-template-columns: 1fr;
+            gap: 20px;
+        }
+
+        .skill-category {
+            background: #F7FAFC;
+            padding: 15px;
+            border-radius: 8px;
+        }
+
+        .skill-title {
+            font-weight: 600;
+            color: #2d3748;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+
+        .skill-item {
+            background: #E2E8F0;
+            padding: 4px 12px;
+            border-radius: 12px;
+            font-size: 0.9em;
+            color: #4A5568;
+        }
+
+        .action-buttons {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            gap: 10px;
+            z-index: 1000;
+        }
+
+        .action-button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            border: none;
+            cursor: pointer;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+            font-size: 1.2em;
+            color: white;
+            text-decoration: none;
+        }
+
+        .action-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .whatsapp {
+            background: #25D366;
+        }
+
+        .linkedin {
+            background: #0077B5;
+        }
+
+        .email {
+            background: #EA4335;
+        }
+
+        .print {
+            background: #4A5568;
+        }
+
+        .tooltip {
+            position: absolute;
+            background: #2D3748;
+            color: white;
+            padding: 5px 10px;
+            border-radius: 5px;
+            font-size: 0.8em;
+            bottom: 100%;
+            left: 50%;
+            transform: translateX(-50%);
+            margin-bottom: 5px;
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+
+        .action-button:hover .tooltip {
+            opacity: 1;
+        }
+
+        :focus {
+            outline: 3px solid #4299E1;
+            outline-offset: 2px;
+        }
+
+        .action-button:focus {
+            outline-color: white;
+        }
+    </style>
+    <script>
+        function printCV() {
+            window.print();
+        }
+    </script>
+</head>
+<body>
+    <div class="action-buttons">
+        <a href="https://wa.me/2215918985" target="_blank" class="action-button whatsapp">
+            <i class="fab fa-whatsapp"></i>
+            <span class="tooltip">WhatsApp</span>
+        </a>
+        <a href="https://www.linkedin.com/in/flavia-noelia-lópez-26b42756" target="_blank" class="action-button linkedin">
+            <i class="fab fa-linkedin-in"></i>
+            <span class="tooltip">LinkedIn</span>
+        </a>
+        <a href="mailto:flavialopez60@hotmail.com" class="action-button email">
+            <i class="far fa-envelope"></i>
+            <span class="tooltip">Email</span>
+        </a>
+        <button onclick="printCV()" class="action-button print">
+            <i class="fas fa-print"></i>
+            <span class="tooltip">Imprimir/PDF</span>
+        </button>
+    </div>
+    <div class="cv-container">
+        <header class="header">
+            <h1 class="name">FLAVIA NOELIA LÓPEZ</h1>
+            <div class="title">Site Reliability Engineer / Senior Systems Administrator</div>
+            <div class="contact-info">
+                <span>📍 La Plata, Buenos Aires</span>
+                <span>📱 2215918985</span>
+                <span>📧 flavialopez60@hotmail.com</span>
+                <span>🔗 linkedin.com/in/flavialopez</span>
+            </div>
+        </header>
+
+        <div class="achievements">
+            <h2 class="section-title">🏆 Logros Destacados</h2>
+            <div class="achievement-item">
+                <span class="achievement-icon">📈</span>
+                <div>Implementé monitoreo proactivo con Zabbix reduciendo el MTTR (Mean Time To Recovery) en un 40% para incidentes críticos</div>
+            </div>
+            <div class="achievement-item">
+                <span class="achievement-icon">🎯</span>
+                <div>Mantuve un SLA de 99.9% en servicios críticos gestionando más de 100 servidores en entornos híbridos</div>
+            </div>
+            <div class="achievement-item">
+                <span class="achievement-icon">🚀</span>
+                <div>Lideré la migración exitosa de 50+ máquinas virtuales con zero downtime, implementando estrategias de failover</div>
+            </div>
+        </div>
+
+        <div class="tech-highlights">
+            <div class="tech-tag">Linux</div>
+            <div class="tech-tag">Windows Server</div>
+            <div class="tech-tag">Virtualización</div>
+            <div class="tech-tag">Docker</div>
+            <div class="tech-tag">Zabbix</div>
+            <div class="tech-tag">SQL Server</div>
+            <div class="tech-tag">Oracle</div>
+            <div class="tech-tag">Active Directory</div>
+            <div class="tech-tag">Backup & Recovery</div>
+        </div>
+
+        <div class="main-grid">
+            <div class="left-column">
+                <section class="section">
+                    <h2 class="section-title">💼 Experiencia Profesional</h2>
+                    
+                    <div class="job">
+                        <div class="job-title">Senior Systems Administrator</div>
+                        <div class="job-company">Banco Galicia - Chacarita</div>
+                        <div class="job-date">2022 – Actualidad</div>
+                        <ul>
+                            <li>Implementación de prácticas SRE y automatización de procesos de infraestructura</li>
+                            <li>Gestión de alta disponibilidad para servicios críticos bancarios</li>
+                            <li>Desarrollo de dashboards y alertas para monitoreo proactivo</li>
+                            <li>Optimización de performance y escalabilidad de sistemas core</li>
+                            <li>Automatización de procesos</li>
+                        </ul>
+                    </div>
+
+                    <div class="job">
+                        <div class="job-title">Site Reliability Engineer</div>
+                        <div class="job-company">Ministerio de Salud - Prov. Buenos Aires</div>
+                        <div class="job-date">2008 – actualidad</div>
+                        <ul>
+                            <li>Diseño e implementación de arquitectura de sistemas críticos</li>
+                            <li>Gestión de seguridad y compliance en infraestructura gubernamental</li>
+                            <li>Automatización de procesos de backup y disaster recovery</li>
+                            <li>Implementación de soluciones de monitoreo y logging centralizado</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="job">
+                        <div class="job-title">Site Reliability Engineer</div>
+                        <div class="job-
